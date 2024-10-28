@@ -73,5 +73,6 @@ rspec
 ## Usage demonstration
 Watch the video below to see the use of the API:
 
-https://github.com/user-attachments/assets/503009ec-058b-4385-8a35-c9b259e1401c
+https://github.com/user-attachments/assets/b0af9da4-6a77-4881-a99e-574014b6dc23
+
 
