@@ -1,5 +1,5 @@
 class DiscountCalculatorService
-  DISCOUNT_CONFIG_PATH = Rails.root.join('config/discounts/buy_x_get_y.json')
+  DISCOUNT_CONFIG_PATH = Rails.root.join('config/discounts/discount_rules.json')
 
   attr_reader :cart, :discount_config
 
@@ -13,9 +13,9 @@ class DiscountCalculatorService
       { name: item['name'], discounted_price: item_discounted_price(item) }
     end
 
-    total_discounted_price = discounted_items.sum { |item| item[:discounted_price] }
+    final_cart_cost = discounted_items.sum { |item| item[:discounted_price] }
 
-    { items: discounted_items, total_discounted_price: total_discounted_price }
+    { items: discounted_items, final_cart_cost: final_cart_cost.round(2) }
   end
 
   private
