@@ -8,7 +8,9 @@ This Ruby on Rails API provides a "Buy X Get Y" discount feature for a cereal sh
     
 ## 🔧 Technology Used
   - Ruby on Rails: MVC framework for building a scalable and robust API.
-  - RSpec: Testing framework to ensure the reliability and quality of the API
+  - RSpec: Testing framework to ensure the reliability and quality of the API.
+  - RuboCop: A static code analyzer and linter for Ruby that enforces consistent coding style and best practices, helping maintain high-quality, readable code.
+  - SimpleCov: A code coverage analysis tool that provides insights into test coverage, ensuring critical parts of the codebase are well-tested and reliable.
 
 ## 📊 Project Structure
   - app/models - Models for Cart and Line Item.
