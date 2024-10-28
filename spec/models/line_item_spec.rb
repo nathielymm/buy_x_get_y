@@ -1,4 +1,3 @@
-# spec/models/line_item_spec.rb
 require 'rails_helper'
 
 RSpec.describe LineItem, type: :model do
