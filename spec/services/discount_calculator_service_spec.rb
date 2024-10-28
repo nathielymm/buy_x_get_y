@@ -43,7 +43,7 @@ RSpec.describe DiscountCalculatorService, type: :service do
         total_price = line_items.sum(&:price)
 
         expect(result[:items]).to eq(expected_items)
-        expect(result[:total_discounted_price]).to eq(total_price)
+        expect(result[:final_cart_cost]).to eq(total_price)
       end
     end
 
@@ -63,7 +63,7 @@ RSpec.describe DiscountCalculatorService, type: :service do
         total_price = line_items.sum(&:price)
 
         expect(result[:items]).to eq(expected_items)
-        expect(result[:total_discounted_price]).to eq(total_price)
+        expect(result[:final_cart_cost]).to eq(total_price)
       end
     end
 
@@ -82,7 +82,7 @@ RSpec.describe DiscountCalculatorService, type: :service do
         total_price = line_items.sum(&:price)
 
         expect(result[:items]).to eq(expected_items)
-        expect(result[:total_discounted_price]).to eq(total_price)
+        expect(result[:final_cart_cost]).to eq(total_price)
       end
     end
 
@@ -106,7 +106,7 @@ RSpec.describe DiscountCalculatorService, type: :service do
         total_price = 50.0 + 200.0 + 300.0
 
         expect(result[:items]).to eq(expected_items)
-        expect(result[:total_discounted_price]).to eq(total_price)
+        expect(result[:final_cart_cost]).to eq(total_price)
       end
     end
   end
