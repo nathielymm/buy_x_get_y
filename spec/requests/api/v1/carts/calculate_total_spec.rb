@@ -22,7 +22,7 @@ RSpec.describe 'Api::V1::Carts::CalculateTotal', type: :request do
 
       it 'sends request successfully' do
         request
-        response_json = JSON.parse(response.body)
+        response_json = response.parsed_body
 
         expect(response).to have_http_status(:ok)
         expect(response_json.keys).to match_array(%w[items final_cart_cost])

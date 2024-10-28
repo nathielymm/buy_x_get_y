@@ -13,7 +13,7 @@
       <img src="./assets/0.13.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-10-28T09:43:28-03:00">2024-10-28T09:43:28-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-10-28T10:44:59-03:00">2024-10-28T10:44:59-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -29,7 +29,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         3.94
+         3.92
        </span>
     </span> hits/line
     )
@@ -42,8 +42,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>51</b> relevant lines,
-    <span class="green"><b>51</b> lines covered</span> and
+    <b>50</b> relevant lines,
+    <span class="green"><b>50</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -116,11 +116,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#df724220ab868e5bfb9c59a8716a3645335cb642" class="src_link" title="app/services/discount_calculator_service.rb">app/services/discount_calculator_service.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">59</td>
-            <td class="cell--number">32</td>
-            <td class="cell--number">32</td>
+            <td class="cell--number">58</td>
+            <td class="cell--number">31</td>
+            <td class="cell--number">31</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">5.69</td>
+            <td class="cell--number">5.71</td>
             
           </tr>
         
@@ -593,7 +593,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         5.69
+         5.71
        </span>
     </span> hits/line
     )
@@ -606,8 +606,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>32</b> relevant lines,
-    <span class="green"><b>32</b> lines covered</span> and
+    <b>31</b> relevant lines,
+    <span class="green"><b>31</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -636,11 +636,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#df724220ab868e5bfb9c59a8716a3645335cb642" class="src_link" title="app/services/discount_calculator_service.rb">app/services/discount_calculator_service.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">59</td>
-            <td class="cell--number">32</td>
-            <td class="cell--number">32</td>
+            <td class="cell--number">58</td>
+            <td class="cell--number">31</td>
+            <td class="cell--number">31</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">5.69</td>
+            <td class="cell--number">5.71</td>
             
           </tr>
         
@@ -1146,8 +1146,8 @@
     
 
     <div class="t-line-summary">
-      <b>32</b> relevant lines.
-      <span class="green"><b>32</b> lines covered</span> and
+      <b>31</b> relevant lines.
+      <span class="green"><b>31</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -1290,7 +1290,7 @@
 
             
 
-            <code class="ruby">    return { items: [], final_cart_cost: 0.0 } unless cart[&#39;lineItems&#39;].present?</code>
+            <code class="ruby">    return { items: [], final_cart_cost: 0.0 } if cart[&#39;lineItems&#39;].blank?</code>
           </li>
         </div>
       
@@ -1312,24 +1312,12 @@
 
             
 
-            <code class="ruby">    pp(cart)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="5" data-linenumber="15">
-            
-              <span class="hits">5</span>
-            
-
-            
-
             <code class="ruby">    discounted_items = cart[&#39;lineItems&#39;].map do |item|</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="11" data-linenumber="16">
+          <li class="covered" data-hits="11" data-linenumber="15">
             
               <span class="hits">11</span>
             
@@ -1341,7 +1329,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="17">
+          <li class="never" data-hits="" data-linenumber="16">
             
 
             
@@ -1351,7 +1339,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="18">
+          <li class="never" data-hits="" data-linenumber="17">
             
 
             
@@ -1361,7 +1349,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="16" data-linenumber="19">
+          <li class="covered" data-hits="16" data-linenumber="18">
             
               <span class="hits">16</span>
             
@@ -1373,7 +1361,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="20">
+          <li class="never" data-hits="" data-linenumber="19">
             
 
             
@@ -1383,7 +1371,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="21">
+          <li class="covered" data-hits="5" data-linenumber="20">
             
               <span class="hits">5</span>
             
@@ -1395,7 +1383,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="22">
+          <li class="never" data-hits="" data-linenumber="21">
             
 
             
@@ -1405,7 +1393,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="23">
+          <li class="never" data-hits="" data-linenumber="22">
             
 
             
@@ -1415,7 +1403,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="24">
+          <li class="covered" data-hits="1" data-linenumber="23">
             
               <span class="hits">1</span>
             
@@ -1427,7 +1415,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="25">
+          <li class="never" data-hits="" data-linenumber="24">
             
 
             
@@ -1437,7 +1425,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="26">
+          <li class="covered" data-hits="1" data-linenumber="25">
             
               <span class="hits">1</span>
             
@@ -1449,7 +1437,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="11" data-linenumber="27">
+          <li class="covered" data-hits="11" data-linenumber="26">
             
               <span class="hits">11</span>
             
@@ -1461,7 +1449,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="28">
+          <li class="covered" data-hits="2" data-linenumber="27">
             
               <span class="hits">2</span>
             
@@ -1473,7 +1461,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="29">
+          <li class="never" data-hits="" data-linenumber="28">
             
 
             
@@ -1483,7 +1471,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="9" data-linenumber="30">
+          <li class="covered" data-hits="9" data-linenumber="29">
             
               <span class="hits">9</span>
             
@@ -1495,7 +1483,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="31">
+          <li class="never" data-hits="" data-linenumber="30">
             
 
             
@@ -1505,7 +1493,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="32">
+          <li class="never" data-hits="" data-linenumber="31">
             
 
             
@@ -1515,7 +1503,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="33">
+          <li class="never" data-hits="" data-linenumber="32">
             
 
             
@@ -1525,7 +1513,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="34">
+          <li class="covered" data-hits="1" data-linenumber="33">
             
               <span class="hits">1</span>
             
@@ -1537,7 +1525,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="11" data-linenumber="35">
+          <li class="covered" data-hits="11" data-linenumber="34">
             
               <span class="hits">11</span>
             
@@ -1549,7 +1537,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="36">
+          <li class="never" data-hits="" data-linenumber="35">
             
 
             
@@ -1559,7 +1547,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="37">
+          <li class="never" data-hits="" data-linenumber="36">
             
 
             
@@ -1569,7 +1557,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="38">
+          <li class="covered" data-hits="1" data-linenumber="37">
             
               <span class="hits">1</span>
             
@@ -1581,7 +1569,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="32" data-linenumber="39">
+          <li class="covered" data-hits="32" data-linenumber="38">
             
               <span class="hits">32</span>
             
@@ -1593,7 +1581,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="40">
+          <li class="never" data-hits="" data-linenumber="39">
             
 
             
@@ -1603,7 +1591,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="41">
+          <li class="never" data-hits="" data-linenumber="40">
             
 
             
@@ -1613,7 +1601,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="42">
+          <li class="covered" data-hits="1" data-linenumber="41">
             
               <span class="hits">1</span>
             
@@ -1625,7 +1613,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="43">
+          <li class="covered" data-hits="3" data-linenumber="42">
             
               <span class="hits">3</span>
             
@@ -1637,7 +1625,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="6" data-linenumber="44">
+          <li class="covered" data-hits="6" data-linenumber="43">
             
               <span class="hits">6</span>
             
@@ -1649,7 +1637,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="45">
+          <li class="covered" data-hits="3" data-linenumber="44">
             
               <span class="hits">3</span>
             
@@ -1661,7 +1649,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="46">
+          <li class="never" data-hits="" data-linenumber="45">
             
 
             
@@ -1671,7 +1659,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="47">
+          <li class="never" data-hits="" data-linenumber="46">
             
 
             
@@ -1681,7 +1669,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="48">
+          <li class="covered" data-hits="1" data-linenumber="47">
             
               <span class="hits">1</span>
             
@@ -1693,7 +1681,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="21" data-linenumber="49">
+          <li class="covered" data-hits="21" data-linenumber="48">
             
               <span class="hits">21</span>
             
@@ -1705,7 +1693,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="50">
+          <li class="never" data-hits="" data-linenumber="49">
             
 
             
@@ -1715,7 +1703,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="51">
+          <li class="never" data-hits="" data-linenumber="50">
             
 
             
@@ -1725,7 +1713,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="52">
+          <li class="covered" data-hits="1" data-linenumber="51">
             
               <span class="hits">1</span>
             
@@ -1737,7 +1725,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="12" data-linenumber="53">
+          <li class="covered" data-hits="12" data-linenumber="52">
             
               <span class="hits">12</span>
             
@@ -1749,7 +1737,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="54">
+          <li class="never" data-hits="" data-linenumber="53">
             
 
             
@@ -1759,7 +1747,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="55">
+          <li class="never" data-hits="" data-linenumber="54">
             
 
             
@@ -1769,7 +1757,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="56">
+          <li class="covered" data-hits="1" data-linenumber="55">
             
               <span class="hits">1</span>
             
@@ -1781,7 +1769,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="57">
+          <li class="covered" data-hits="2" data-linenumber="56">
             
               <span class="hits">2</span>
             
@@ -1793,7 +1781,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="58">
+          <li class="never" data-hits="" data-linenumber="57">
             
 
             
@@ -1803,7 +1791,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="59">
+          <li class="never" data-hits="" data-linenumber="58">
             
 
             
