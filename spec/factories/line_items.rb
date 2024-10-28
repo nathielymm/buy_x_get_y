@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :line_item do
-    name { 'Peanut Butter' }
-    price { '9.99' }
-    sku { 'PEANUT-BUTTER' }
+    name { 'Cereal Example' }
+    price { rand(32..39) }
+    sku { 'CEREAL-EXAMPLE' }
 
     association :cart
   end

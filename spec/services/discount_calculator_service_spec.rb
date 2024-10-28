@@ -30,8 +30,8 @@ RSpec.describe DiscountCalculatorService, type: :service do
     context 'when the cart has no eligible items for discount' do
       let(:line_items) do
         [
-          build(:line_item, name: 'Item3', price: 100.0, sku: 'ITEM4'),
-          build(:line_item, name: 'Item5', price: 150.0, sku: 'ITEM5')
+          build(:line_item, name: 'Item3', sku: 'ITEM3'),
+          build(:line_item, name: 'Item5', sku: 'ITEM5')
         ]
       end
 
@@ -50,8 +50,8 @@ RSpec.describe DiscountCalculatorService, type: :service do
     context 'when the cart has eligible items but no prerequisite items' do
       let(:line_items) do
         [
-          build(:line_item, name: 'Item1', price: 100.0, sku: 'ITEM1'),
-          build(:line_item, name: 'Item2', price: 150.0, sku: 'ITEM2')
+          build(:line_item, name: 'Item1', sku: 'ITEM1'),
+          build(:line_item, name: 'Item2', sku: 'ITEM2')
         ]
       end
 
@@ -61,7 +61,6 @@ RSpec.describe DiscountCalculatorService, type: :service do
           { name: item.name, discounted_price: item.price }
         end
         total_price = line_items.sum(&:price)
-
         expect(result[:items]).to eq(expected_items)
         expect(result[:final_cart_cost]).to eq(total_price)
       end
@@ -70,7 +69,7 @@ RSpec.describe DiscountCalculatorService, type: :service do
     context 'when the cart has only one item' do
       let(:line_items) do
         [
-          build(:line_item, name: 'Item1', price: 100.0, sku: 'ITEM1')
+          build(:line_item, name: 'Item1', sku: 'ITEM1')
         ]
       end
 
@@ -89,9 +88,9 @@ RSpec.describe DiscountCalculatorService, type: :service do
     context 'when the cart has eligible items and a prerequisite item' do
       let(:line_items) do
         [
-          build(:line_item, name: 'Item1', price: 100.0, sku: 'ITEM1'),
-          build(:line_item, name: 'Item2', price: 200.0, sku: 'ITEM2'),
-          build(:line_item, name: 'Item3', price: 300.0, sku: 'ITEM3')
+          build(:line_item, name: 'Item1', price: 32.0, sku: 'ITEM1'),
+          build(:line_item, name: 'Item2', price: 34.0, sku: 'ITEM2'),
+          build(:line_item, name: 'Item3', price: 35.0, sku: 'ITEM3')
         ]
       end
 
@@ -99,11 +98,11 @@ RSpec.describe DiscountCalculatorService, type: :service do
         result = service.apply_discounts
 
         expected_items = [
-          { name: 'Item1', discounted_price: 50.0 },
-          { name: 'Item2', discounted_price: 200.0 },
-          { name: 'Item3', discounted_price: 300.0 }
+          { name: 'Item1', discounted_price: 16.0 },
+          { name: 'Item2', discounted_price: 34.0 },
+          { name: 'Item3', discounted_price: 35.0 }
         ]
-        total_price = 50.0 + 200.0 + 300.0
+        total_price = 16.0 + 34.0 + 35.0
 
         expect(result[:items]).to eq(expected_items)
         expect(result[:final_cart_cost]).to eq(total_price)
