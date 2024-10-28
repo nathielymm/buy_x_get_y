@@ -9,6 +9,8 @@ class DiscountCalculatorService
   end
 
   def apply_discounts
+    return { items: [], final_cart_cost: 0.0 } unless cart['lineItems'].present?
+
     discounted_items = cart['lineItems'].map do |item|
       { name: item['name'], discounted_price: item_discounted_price(item) }
     end
