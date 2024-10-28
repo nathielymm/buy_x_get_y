@@ -69,3 +69,9 @@ The repository includes RSpec tests for API endpoints and discount calculation s
 ```bash
 rspec
 ```
+
+## Usage demonstration
+Watch the video below to see the use of the API:
+
+https://github.com/user-attachments/assets/503009ec-058b-4385-8a35-c9b259e1401c
+
