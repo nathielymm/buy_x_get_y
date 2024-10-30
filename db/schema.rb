@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_28_021833) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_30_224203) do
   create_table "carts", force: :cascade do |t|
     t.string "reference"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "discount_configs", force: :cascade do |t|
+    t.text "prerequisite_skus"
+    t.text "eligible_skus"
+    t.string "discount_unit"
+    t.decimal "discount_value", precision: 5, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
