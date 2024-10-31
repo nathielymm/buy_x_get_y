@@ -2,7 +2,8 @@ module Api
   module V1
     class CartsController < ApplicationController
       def calculate_total
-        service = DiscountCalculatorService.new(cart_params)
+        cart = CreateCartCommand.new(cart_params).call
+        service = DiscountCalculatorService.new(cart)
         result = service.apply_discounts
 
         render json: result
