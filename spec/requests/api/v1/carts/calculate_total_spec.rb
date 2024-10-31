@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Api::V1::Carts::CalculateTotal', type: :request do
+  let(:discount_config) { create(:discount_config) }
   let(:valid_attributes) do
     {
       cart: {

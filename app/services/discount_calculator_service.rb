@@ -1,58 +1,70 @@
 class DiscountCalculatorService
-  DISCOUNT_CONFIG_PATH = Rails.root.join('config/discounts/discount_rules.json')
-
-  attr_reader :cart, :discount_config
+  attr_reader :cart, :discount_config, :cart_prerequisite_item, :discountable_cart_item
 
   def initialize(cart)
     @cart = cart
-    @discount_config = JSON.parse(File.read(DISCOUNT_CONFIG_PATH))
+    @discount_config = DiscountConfig.first
+    @cart_prerequisite_item = find_cart_prerequisite_item
+    @discountable_cart_item = find_discountable_cart_item
   end
 
   def apply_discounts
-    return { items: [], final_cart_cost: 0.0 } if cart['lineItems'].blank?
+    discounted_items, final_cart_cost = calculate_total
 
-    discounted_items = cart['lineItems'].map do |item|
-      { name: item['name'], discounted_price: item_discounted_price(item) }
-    end
-
-    final_cart_cost = discounted_items.sum { |item| item[:discounted_price] }
-
-    { items: discounted_items, final_cart_cost: final_cart_cost.round(2) }
+    { items: discounted_items, final_cart_cost: final_cart_cost }
   end
 
   private
 
-  def item_discounted_price(item)
-    if eligible_for_discount?(item)
-      item['price'].to_f * (1 - discount_rate)
-    else
-      item['price'].to_f
+  def calculate_total
+    final_cart_cost = 0
+    discounted_items = cart.line_items.map do |item|
+      discounted_price = calculate_cart_item_discounted_price(item)
+      final_cart_cost += discounted_price.round(2)
+
+      { name: item.name, discounted_price: discounted_price.round(2) }
     end
+
+    [discounted_items, final_cart_cost]
   end
 
-  def eligible_for_discount?(item)
-    prerequisite_item_present? && eligible_skus.include?(item['sku']) && item == cheapest_eligible_item
+  def find_cart_prerequisite_item
+    cart_prerequisite_items = cart.line_items.select { |item| prerequisite_skus.include?(item.sku) }
+    select_cart_prerequisite_item(cart_prerequisite_items)
   end
 
-  def prerequisite_item_present?
-    cart['lineItems'].any? { |item| prerequisite_skus.include?(item['sku']) }
+  def select_cart_prerequisite_item(cart_prerequisite_items)
+    return if cart_prerequisite_items.empty?
+
+    exclusive_prerequisite = cart_prerequisite_items.find { |item| eligible_skus.exclude?(item.sku) }
+    exclusive_prerequisite || cart_prerequisite_items.max_by(&:price)
   end
 
-  def cheapest_eligible_item
-    @cheapest_eligible_item ||= cart['lineItems']
-                                .select { |item| eligible_skus.include?(item['sku']) }
-                                .min_by { |item| item['price'].to_f }
+  def find_discountable_cart_item
+    return nil if cart_prerequisite_item.blank?
+
+    cart_eligible_items = cart.line_items.select do |item|
+      eligible_skus.include?(item.sku) && item != cart_prerequisite_item
+    end
+
+    cart_eligible_items.min_by(&:price)
+  end
+
+  def calculate_cart_item_discounted_price(item)
+    return item.price.to_f unless item == discountable_cart_item
+
+    item.price.to_f * (1 - discount_rate)
   end
 
   def prerequisite_skus
-    discount_config['prerequisite_skus']
+    discount_config.prerequisite_skus
   end
 
   def eligible_skus
-    discount_config['eligible_skus']
+    discount_config.eligible_skus
   end
 
   def discount_rate
-    discount_config['discount_value'].to_f / 100
+    discount_config.discount_value.to_f / 100
   end
 end
