@@ -1,11 +1,9 @@
 class DiscountCalculatorService
-  attr_reader :cart, :discount_config, :cart_prerequisite_item, :discountable_cart_item
+  attr_reader :cart, :discount_config
 
   def initialize(cart)
     @cart = cart
     @discount_config = DiscountConfig.first
-    @cart_prerequisite_item = find_cart_prerequisite_item
-    @discountable_cart_item = find_discountable_cart_item
   end
 
   def apply_discounts
@@ -28,30 +26,26 @@ class DiscountCalculatorService
     [discounted_items, final_cart_cost]
   end
 
-  def find_cart_prerequisite_item
-    cart_prerequisite_items = cart.line_items.select { |item| prerequisite_skus.include?(item.sku) }
-    select_cart_prerequisite_item(cart_prerequisite_items)
+  def cart_prerequisite_items
+    @cart_prerequisite_items ||= cart.line_items.select { |item| prerequisite_skus.include?(item.sku) }
   end
 
-  def select_cart_prerequisite_item(cart_prerequisite_items)
-    return if cart_prerequisite_items.empty?
-
-    exclusive_prerequisite = cart_prerequisite_items.find { |item| eligible_skus.exclude?(item.sku) }
-    exclusive_prerequisite || cart_prerequisite_items.max_by(&:price)
+  def cart_eligible_items
+    @cart_eligible_items ||= cart.line_items.select { |item| eligible_skus.include?(item.sku) }
   end
 
   def find_discountable_cart_item
-    return nil if cart_prerequisite_item.blank?
+    return nil if cart_eligible_items.empty? || cart_prerequisite_items.empty?
 
-    cart_eligible_items = cart.line_items.select do |item|
-      eligible_skus.include?(item.sku) && item != cart_prerequisite_item
-    end
+    combined_unique_count = (cart_eligible_items + cart_prerequisite_items).uniq { |item| item.id }.size
+    return nil if combined_unique_count <= 1
 
     cart_eligible_items.min_by(&:price)
   end
 
   def calculate_cart_item_discounted_price(item)
-    return item.price.to_f unless item == discountable_cart_item
+    discountable_item = find_discountable_cart_item
+    return item.price.to_f unless item == discountable_item
 
     item.price.to_f * (1 - discount_rate)
   end
